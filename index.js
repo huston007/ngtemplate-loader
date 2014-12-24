@@ -13,6 +13,9 @@ module.exports = function (content) {
     	throw 'The path for file doesn\'t contains relativeTo param';
     }
     var filePath = this.resource.slice(relativeStartIndex + relativeTo.length); // get the base path
+    if (path.sep === '\\'){
+	    filePath = filePath.replace(/\\/g, '/');
+    }
     var html;
 
     if (content.match(/^module\.exports/)) {
