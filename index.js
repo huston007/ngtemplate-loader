@@ -7,7 +7,7 @@ module.exports = function (content) {
     var query = loaderUtils.parseQuery(this.query);
     var ngModule = query.module || 'ngTemplates';
     var relativeTo = query.relativeTo || '';
-    relativeTo.replace('/', path.sep);
+    relativeTo = relativeTo.replace(new RegExp('/', 'g'), path.sep);
     var relativeStartIndex = this.resource.indexOf(relativeTo);
     if (relativeStartIndex === -1){
     	throw 'The path for file doesn\'t contains relativeTo param';
